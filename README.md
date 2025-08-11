@@ -41,35 +41,25 @@ The system ensures controlled dispensing, user authentication, and accurate meas
      - Card C → 500ml (40 seconds)
      - Card D → 1L (80 seconds)
    - The green LED indicates dispensing in progress.
+     ---
+     ## Flowchart
+
+```mermaid
+flowchart TD
+    A([Power ON System]) --> B([Initialize (LCD, IR Sensors, Motor)])
+    B --> C([Scan RFID Card])
+    C --> D{Card Detected?}
+    D -->|No| C
+    D -->|Yes| E([Read Card UID])
+    E --> F([Check Card Type])
+    F -->|Valid| G([Dispense Item])
+    F -->|Invalid| H([Show Error Message])
+    G --> I([Thank You Message on LCD])
+    I --> J([Stop Motor & Return to Idle])
 
 5. *Completion*  
    - The motor stops after the required time.  
    - The LCD displays "THANK YOU" before returning to the welcome screen.
 
 ---
-mermaid
-flowchart TD
-    A[Start] --> B[Power ON System]
-    B --> C[Initialize LCD, RFID, Sensors, Motor]
-    C --> D[Scan RFID Card]
-    D -->|No Card Detected| D
-    D -->|Card Detected| E[Read Card UID]
-    E --> F[Check Card Type]
-    
-    F -->|Card A| G[100ml Dispense]
-    F -->|Card B| H[200ml Dispense]
-    F -->|Card C| I[500ml Dispense]
-    F -->|Card D| J[1 Liter Dispense]
-    
-    G --> K[Check IR Sensor for Container]
-    H --> K
-    I --> K
-    J --> K
-    
-    K -->|No Container| L[Display "Place Container"]
-    L --> D
-    
-    K -->|Container Present| M[Activate Motor to Dispense Milk]
-    M --> N[Stop Motor After Set Time]
-    N --> O[Display "Thank You"]
-    O --> D
+ 
