@@ -47,6 +47,29 @@ The system ensures controlled dispensing, user authentication, and accurate meas
    - The LCD displays "THANK YOU" before returning to the welcome screen.
 
 ---
-If you paste this into your GitHub *README.md*, it will look well-formatted and professional.  
-
-Do you want me to also add a *flowchart diagram* of the working process so it’s visually interactive? That would make it even better for GitHub.
+ ```mermaid
+flowchart TD
+    A[Start] --> B[Power ON System]
+    B --> C[Initialize LCD, RFID, Sensors, Motor]
+    C --> D[Scan RFID Card]
+    D -->|No Card Detected| D
+    D -->|Card Detected| E[Read Card UID]
+    E --> F[Check Card Type]
+    
+    F -->|Card A| G[100ml Dispense]
+    F -->|Card B| H[200ml Dispense]
+    F -->|Card C| I[500ml Dispense]
+    F -->|Card D| J[1 Liter Dispense]
+    
+    G --> K[Check IR Sensor for Container]
+    H --> K
+    I --> K
+    J --> K
+    
+    K -->|No Container| L[Display "Place Container"]
+    L --> D
+    
+    K -->|Container Present| M[Activate Motor to Dispense Milk]
+    M --> N[Stop Motor After Set Time]
+    N --> O[Display "Thank You"]
+    O --> D
