@@ -43,23 +43,10 @@ The system ensures controlled dispensing, user authentication, and accurate meas
    - The green LED indicates dispensing in progress.
      ---
      ## Flowchart
-
-```mermaid
+        ``mermaid
 flowchart TD
-    A([Power ON System]) --> B([Initialize (LCD, IR Sensors, Motor)])
-    B --> C([Scan RFID Card])
-    C --> D{Card Detected?}
+    A([Start]) --> B([Initialize])
+    B --> C([Scan RFID])
+    C --> D{Card?}
+    D -->|Yes| E([Dispense])
     D -->|No| C
-    D -->|Yes| E([Read Card UID])
-    E --> F([Check Card Type])
-    F -->|Valid| G([Dispense Item])
-    F -->|Invalid| H([Show Error Message])
-    G --> I([Thank You Message on LCD])
-    I --> J([Stop Motor & Return to Idle])
-
-5. *Completion*  
-   - The motor stops after the required time.  
-   - The LCD displays "THANK YOU" before returning to the welcome screen.
-
----
- 
