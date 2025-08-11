@@ -47,7 +47,7 @@ The system ensures controlled dispensing, user authentication, and accurate meas
    - The LCD displays "THANK YOU" before returning to the welcome screen.
 
 ---
- ```mermaid
+mermaid
 flowchart TD
     A[Start] --> B[Power ON System]
     B --> C[Initialize LCD, RFID, Sensors, Motor]
