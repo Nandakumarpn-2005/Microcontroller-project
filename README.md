@@ -1,47 +1,49 @@
-RFID-Based Automatic Milk Dispensing System
+# RFID-Based Automatic Milk Dispensing System
 
-This project is an *Arduino-based automated milk dispensing system* that uses *RFID cards* to dispense pre-set quantities of milk.  
-It includes an *IR sensor, **LCD display, **LED indicators, and a **buzzer* for user feedback.
-
----
-
-## 📌 Features
-- *RFID Authentication* – Only registered RFID cards can trigger dispensing.
-- *Predefined Milk Quantities* – Different cards dispense different amounts:
-  - Card A → 100 ml  
-  - Card B → 200 ml  
-  - Card C → 500 ml  
-  - Card D → 1 liter  
-- *IR Sensor Safety* – Ensures a container is placed before dispensing.
-- *LCD Display* – Shows instructions and dispensing status.
-- *LED & Buzzer Alerts* – Indicate errors, readiness, and completion.
+## 📌 Project Overview
+This project is an *RFID-based milk dispensing system* using an Arduino microcontroller.  
+It automates milk dispensing by recognizing pre-registered RFID cards, each corresponding to a specific milk quantity.  
+The system ensures controlled dispensing, user authentication, and accurate measurement.
 
 ---
 
 ## 🛠 Components Used
-- Arduino (UNO/Nano/compatible)
-- RFID Module (*MFRC522*)
+- Arduino Uno
+- RFID Module (MFRC522)
+- I2C LCD Display (16x2)
 - IR Sensor
-- LCD Display (*16x2*, I2C)
+- Motor (for dispensing)
 - LEDs (Red & Green)
 - Buzzer
-- Relay/Motor Driver & Motor Pump
-- Wires, Breadboard, Power Supply
+- Jumper wires
+- Breadboard
+- Power Supply
 
 ---
 
-## 📋 Circuit Connections
-| Component | Arduino Pin |
-|-----------|-------------|
-| RFID SDA  | 10          |
-| RFID RST  | 9           |
-| IR Sensor | 8           |
-| Red LED   | 3           |
-| Green LED | 7           |
-| Buzzer    | 4           |
-| Motor (Pump) | 6        |
-| LCD I2C   | SDA → A4, SCL → A5 |
+## ⚙ How It Works (Working Process)
+1. *Startup*  
+   - The LCD displays a welcome message.  
+   - The system waits for an RFID card to be scanned.
+
+2. *Card Detection*  
+   - When a card is scanned, the system reads its UID (Unique ID).  
+   - If the UID matches a pre-stored value, the system identifies the corresponding milk quantity.
+
+3. *Container Check*  
+   - The IR sensor checks whether a container is placed under the dispenser.  
+   - If *no container* is detected, the buzzer alerts the user and asks to place a container.  
+
+4. *Milk Dispensing*  
+   - Once the container is detected, the motor starts running for a pre-set time depending on the card:
+     - Card A → 100ml (8 seconds)
+     - Card B → 200ml (16 seconds)
+     - Card C → 500ml (40 seconds)
+     - Card D → 1L (80 seconds)
+   - The green LED indicates dispensing in progress.
+
+5. *Completion*  
+   - The motor stops after the required time.  
+   - The LCD displays "THANK YOU" before returning to the welcome screen.
 
 ---
-
- 
