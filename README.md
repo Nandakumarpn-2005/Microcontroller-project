@@ -59,7 +59,7 @@ It is built using *Arduino, **RFID reader, **IR sensor, **LCD display, and **mot
    - System resets for the next user.
 
 ---
- ##🏁 Conclusion
+ ## 🔚 Conclusion
    This microcontroller-based vending machine project demonstrates the integration of hardware components (RFID module, IR sensors, LCD display, and DC motor) with embedded programming to create a secure and        automated dispensing system.  
    The system ensures that only authorized users can access items, improving efficiency and reducing manual intervention.  
    The flowchart and working process clearly outline the logical sequence, making the design easy to understand, replicate, and enhance for future applications.
