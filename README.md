@@ -42,11 +42,7 @@ The system ensures controlled dispensing, user authentication, and accurate meas
      - Card D → 1L (80 seconds)
    - The green LED indicates dispensing in progress.
      ---
-     ## Flowchart
-        ``mermaid
-flowchart TD
-    A([Start]) --> B([Initialize])
-    B --> C([Scan RFID])
-    C --> D{Card?}
-    D -->|Yes| E([Dispense])
-    D -->|No| C
+     ## Conclusion
+This microcontroller-based vending machine project demonstrates the integration of hardware components (RFID module, IR sensors, LCD display, and DC motor) with embedded programming to create a secure and automated dispensing system.  
+The system ensures that only authorized users can access items, improving efficiency and reducing manual intervention.  
+The flowchart and working process clearly outline the logical sequence, making the design easy to understand, replicate, and enhance for future applications.
